@@ -1,0 +1,11 @@
+<%= form_tag("/posts/create") do %>
+<div class="new">
+    <input class="title" type="text" name="title">
+    <input class="start" type="date" name="date">
+    <input class="end" type="date" name="end">
+    <input class="all" type="checkbox" name="all">
+    <textarea name="memo"></textarea>
+    <input class="cancel" type="button" onclick="location.href='/posts'" value="キャンセル">
+    <%= button_to "保存", {controller: 'users', action: 'create'},{method: :get} %>
+<% end %>
+    </div>
