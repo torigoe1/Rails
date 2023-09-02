@@ -1,0 +1,11 @@
+<div class="new">
+    <%= form_tag("/posts/#{@post.id}/update") do %>
+        <input class="title" type="text" name="title" value=<%= @post.title %> >
+        <input class="start" type="date" name="start" value=<%= @post.start %> >
+        <input class="end" type="date" name="end" value=<%= @post.end %> >
+        <input class="all" type="checkbox" name="all" >
+        <textarea name="memo"><%= @post.memo %></textarea>
+        <input class="cancel" type="button" onclick="location.href='/posts'" value="キャンセル">
+        <%= button_to "保存", {controller: 'users', action: 'update'},{method: :post} %>
+    <% end %>
+</div>
