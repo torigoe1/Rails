@@ -11,8 +11,12 @@ class UsersController < ApplicationController
                      end: params[:end],
                      all: params[:all],
                      memo: params[:memo]) 
-    @post.save
-    redirect_to("/posts")
+    if @post.save
+      flash[:notice] = "スケジュールを登録しました"
+      redirect_to("/posts")
+    else
+      redirect_to("/posts/new")
+    end
   end
 
   def show
@@ -30,9 +34,13 @@ class UsersController < ApplicationController
     @post.end = params[:end]
     @post.all = params[:all]
     @post.memo = params[:memo]
-    @post.save
-
-    redirect_to("/posts")
+    if @post.save
+      flash[:notice] = "スケジュールを登録しました"
+      redirect_to("/posts")
+    else
+      flash[:notice] = "スケジュール登録に失敗しました"
+      redirect_to("/posts/#{@post.id}/edit")
+    end
   end
 
   def destroy

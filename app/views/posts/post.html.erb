@@ -1,5 +1,8 @@
-<h1>Posts#post</h1>
-<input type="button" onclick="location.href='/posts/new'" value="新規作成">
+<div class="body">
+    <div class="header">
+        予定一覧
+        <input type="button" onclick="location.href='/posts/new'" value="新規作成">
+    </div>
 <table>
     <thead>
         <tr>
@@ -17,15 +20,20 @@
         <tr>
             <td><%= post.id %></td>
             <td><%= post.title %></td>
-            <td><%= post.start %></td>
-            <td><%= post.end %></td>
+            <td><%= post.start.strftime('%Y/%m/%d') %></td>
+            <td><%= post.end.strftime('%Y/%m/%d') %></td>
             <td><%= post.all %></td>
-            <td><%= post.updated_at %></td>
+            <td><%= post.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= link_to("詳細","/posts/#{post.id}")%></td>
             <td><%= link_to("編集","/posts/#{post.id}/edit")%></td>
             <td><%= link_to "削除","/posts/#{post.id}/destroy",method:"post", data: {confirm:"予定を削除しますか？"} %></td>
         </tr>
         <% end %>
     </tbody>
+    <tbody>
 </table>
-<p>Find me in app/views/posts/post.html.erb</p>
+<table>
+    <tr>
+        <th>予定合計 <%= @posts.length %>件</th>
+        <th>本日の日付 <%= Date.today.strftime('%Y/%m/%d') %></th>
+</div>

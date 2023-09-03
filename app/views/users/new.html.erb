@@ -1,11 +1,28 @@
 <%= form_tag("/posts/create") do %>
-<div class="new">
-    <input class="title" type="text" name="title">
-    <input class="start" type="date" name="start">
-    <input class="end" type="date" name="end">
-    <input class="all" type="checkbox" name="all">
-    <textarea name="memo"></textarea>
-    <input class="cancel" type="button" onclick="location.href='/posts'" value="キャンセル">
-    <%= button_to "保存", {controller: 'users', action: 'create'},{method: :get} %>
-<% end %>
+<div>
+
+
+    <div>
+        <label for="post_title">タイトル</label>
+        <input class="title" type="text" name="title" id="post_title">
     </div>
+    <div>
+        <label for="post_start">開始日</label>
+        <input class="start" type="date" name="start" id="post_start">
+        <label for="post_end">終了日</label>
+        <input class="end" type="date" name="end" id="post_end">
+    </div>
+    <div>
+        <label for="post_all">終日の場合はチェックを入れます</label>
+        <input class="all" type="checkbox" name="all" id="post_all">
+    </div>
+    <div>
+        <label for="post_memo">スケジュールメモ</label>
+        <textarea name="memo" id="post_memo"></textarea>
+    </div>
+    <div>
+        <input class="cancel" type="button" onclick="location.href='/posts'" value="キャンセル">
+        <%= button_to "保存", {controller: 'users', action: 'create'},{method: :get} %>
+    </div>
+</div>
+<% end %>
