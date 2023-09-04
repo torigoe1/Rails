@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
@@ -15,7 +16,8 @@ class UsersController < ApplicationController
       flash[:notice] = "スケジュールを登録しました"
       redirect_to("/posts")
     else
-      redirect_to("/posts/new")
+      flash[:notice] = "スケジュール登録に失敗しました"
+      render action: :new
     end
   end
 
@@ -39,12 +41,12 @@ class UsersController < ApplicationController
       redirect_to("/posts")
     else
       flash[:notice] = "スケジュール登録に失敗しました"
-      redirect_to("/posts/#{@post.id}/edit")
+      render action: :edit
     end
   end
 
   def destroy
-    @post = Post.find_by(id:paramd[:id])
+    @post = Post.find_by(id:params[:id])
     @post.destroy
     redirect_to("/posts")
   end

@@ -12,6 +12,9 @@
             <th>終了日</th>
             <th>終日</th>
             <th>更新日時</th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
 
@@ -22,7 +25,10 @@
             <td><%= post.title %></td>
             <td><%= post.start.strftime('%Y/%m/%d') %></td>
             <td><%= post.end.strftime('%Y/%m/%d') %></td>
-            <td><%= post.all %></td>
+            <td><% if post.all %>
+                ○
+                <% end %>
+                </td>
             <td><%= post.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
             <td><%= link_to("詳細","/posts/#{post.id}")%></td>
             <td><%= link_to("編集","/posts/#{post.id}/edit")%></td>
@@ -32,8 +38,10 @@
     </tbody>
     <tbody>
 </table>
-<table>
+<table class="footer">
     <tr>
         <th>予定合計 <%= @posts.length %>件</th>
         <th>本日の日付 <%= Date.today.strftime('%Y/%m/%d') %></th>
+    </tr>
+</table>
 </div>

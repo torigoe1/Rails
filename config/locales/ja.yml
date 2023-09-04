@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        title: タイトル
+        start: 開始日
+        end: 終了日
+        memo: スケジュールメモ

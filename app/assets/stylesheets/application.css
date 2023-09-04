@@ -26,3 +26,9 @@ body{
     padding:10px;
     margin: 0px;
  }
+
+ .flash{
+    background-color: black;
+    color:white;
+    text-align: center;
+ }

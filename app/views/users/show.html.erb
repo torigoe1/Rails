@@ -1,24 +1,28 @@
-<%= link_to("←一覧に戻る","/posts")%>
-<%= @post.title %>
-<%= link_to("編集","/posts/#{@post.id}/edit")%>
-<table>
-    <tr>
-        <th>開始日</th>
-        <td><%= @post.start %></td>
-    </tr>
-    <tr>
-        <th>終了日</th>
-        <td><%= @post.end %></td>
-    </tr>
-    <tr>
-        <th>終日</th>
-        <td><%  if @post.all %>
-             ○
-            <% end %>
-        </td>
-    </tr>
-    <tr>
-        <th>スケジュールメモ</th>
-        <td><%= @post.memo %></td>
-    </tr>
-</table>
+<div class="body">
+    <%= link_to("←一覧に戻る","/posts")%>
+    <div class="header">
+        <%= @post.title %>
+        <%= link_to("編集","/posts/#{@post.id}/edit")%>
+    </div>
+    <table class="show">
+        <tr class="tr_1">
+            <th>開始日</th>
+            <td><%= @post.start.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr class="tr_2">
+            <th>終了日</th>
+            <td><%= @post.end.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr class="tr_3">
+            <th>終日</th>
+            <td><%  if @post.all %>
+                 ○
+                <% end %>
+            </td>
+        </tr>
+        <tr class="tr_4">
+            <th>スケジュールメモ</th>
+            <td><%= @post.memo %></td>
+        </tr>
+    </table>
+</div>
