@@ -10,9 +10,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-$(function(){
-    $('.flash').fadeOut(4000);
-  });
+
 
 Rails.start()
 Turbolinks.start()
