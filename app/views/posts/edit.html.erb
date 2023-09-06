@@ -1,0 +1,40 @@
+<div class="new">
+<% @post.errors.full_messages.each do |message| %>
+    <div class="error_message">
+    <%= message %>
+    </div>
+<% end %>
+    <%= form_tag(post_path, method: :patch) do %>
+    <div class="body">
+    <div class="plan">予定を編集してください</div>
+    <div class="contain">
+        <div class="post_top">
+            <label for="post_title">タイトル<div class="red">*</div></label>
+            <input class="title" type="text" name="title" id="post_title" value=<%= @post.title %>>
+        </div>
+        <div class="post_body">
+            <div class="contain_start">
+                <label class="label_start" for="post_start">開始日<div class="red">*</div></label>
+                <input class="start" type="date" name="start" id="post_start" value=<%= @post.start %>>
+            </div>
+            <div class="contain_end">
+                <label class="label_end" for="post_end">終了日<div class="red">*</div></label>
+                <input class="end" type="date" name="end" id="post_end" value=<%= @post.end %>>
+            </div> 
+        </div>
+        <div class="post_foot">
+            <input class="all" type="checkbox" name="all" id="post_all" <% if @post.all %> checked <% end %>>
+            <label class="label_all" for="post_all">終日の場合はチェックを入れます</label>
+        </div>
+        <div class="post_memo">
+            <label for="post_memo">スケジュールメモ</label>
+            <textarea class="memo" name="memo" id="post_memo"><%= @post.memo %></textarea>
+        </div>
+        <div class="post_submit">
+            <input class="cancel" type="button" onclick="location.href='/posts'" value="キャンセル">
+            <%= button_to "保存", {controller: 'posts', action: 'update'},{method: :patch} %>
+        </div>
+    </div>
+</div>
+    <% end %>
+</div>
